@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>skeet handle manager</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/script.js"></script>
+  </head>
+  <body>
+    <h1>skeet handle manager</h1>
+    <p>Use this to manage skeet.* domains. 'Handle' is your desired handle,
+    'Value' is your DID. <br><b>Please check to see if you're causing a collision by
+    checking your desired handle using the second form</b></p>
+    <p>Valid domains are:</p>
+    <ul>
+      <li>skeet.pink</li>
+      <li>skeet.observer</li>
+      <li>skeet.network</li>
+      <li>skeet.money</li>
+      <li>skeet.moe</li>
+      <li>skeet.horse</li>
+      <li>skeet.homes</li>
+      <li>skeet.golf</li>
+      <li>skeet.farm</li>
+      <li>skeet.delivery</li>
+      <li>skeet.church</li>
+    </ul>
+    <form onsubmit="submitForm(event, '{{.PostURL}}', 'handle', 'value', 'response-create-update')">
+      <label for="handle">Handle:</label>
+      <input type="text" id="handle" name="handle" required />
+      <label for="value">Value:</label>
+      <input type="text" id="value" name="value" required />
+      <button type="submit">Create/Update</button>
+      <pre id="response-create-update"></pre>
+    </form>
+    <form onsubmit="submitForm(event, '{{.GetURL}}', 'get-handle', null, 'response-get')">
+      <label for="get-handle">Get value for handle:</label>
+      <input type="text" id="get-handle" name="handle" required />
+      <button type="submit">Get</button>
+      <pre id="response-get"></pre>
+    </form>
+    <div>
+      {{if .Handle}}
+      <p>Handle: <span id="handle-value">{{.Handle}}</span></p>
+      {{end}}
+      <p class="error" id="error"></p>
+    </div>
+  </body>
+</html>
