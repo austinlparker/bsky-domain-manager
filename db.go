@@ -21,16 +21,8 @@ func init() {
 		log.Fatal(err)
 	}
 	log.Println("Database connection established")
-	dropTable()
+
 	createTable()
-}
-func dropTable() {
-	sqlStmt := `DROP TABLE IF EXISTS kv;`
-	_, err := db.Exec(sqlStmt)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Println("Table dropped")
 }
 
 func createTable() {
